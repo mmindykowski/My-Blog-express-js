@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const hbs = require("express-handlebars");
 
 app.use(express.static("public"));
 
