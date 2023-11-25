@@ -1,2 +1,13 @@
-<h1>This is my hbs page</h1>
-<p>This is page content</p>
+
+{{#if displayTitle}}
+    <h1>{{title}}</h1>
+{{else}}
+    <h1>Default title</h1>
+{{/if}}    
+<p>{{content}}</p>
+
+<ul>
+    {{#each names}}
+    <li>{{this}}</li>
+    {{/each}}
+</ul>
