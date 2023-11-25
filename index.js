@@ -13,6 +13,15 @@ app.get("/user/:id?/:name?", function (req, res) {
   }
 });
 
+
+app.get("/data", function (req, res) {
+    if (req.query.search) {
+      res.send('Wyszukaj' + req.query.search + '' + req.query.model );
+    } else {
+      res.send("Błąd");
+    }
+  });
+
 app.listen(8080, function () {
   console.log("Serwer Node.js działa");
 });
