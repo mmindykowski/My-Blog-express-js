@@ -5,9 +5,9 @@ app.get("/", function (req, res) {
   res.send("Hello Nodemon!");
 });
 
-app.get("/user/:id?", function (req, res) {
+app.get("/user/:id?/:name?", function (req, res) {
   if (req.params.id) {
-    res.send("user" + req.params.id);
+    res.send("user" + req.params.id + '' + req.params.name);
   } else {
     res.send("All users");
   }
