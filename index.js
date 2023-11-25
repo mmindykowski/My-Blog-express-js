@@ -8,7 +8,7 @@ app.engine("hbs", hbs.engine({ extname: ".hbs" }));
 app.set("view engine", "hbs");
 
 app.get("/", function (req, res) {
-  res.send("Hello World!");
+  res.render("home");
 });
 
 // app.get("/user/:id?/:name?", function (req, res) {
