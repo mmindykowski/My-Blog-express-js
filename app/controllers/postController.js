@@ -5,7 +5,7 @@ module.exports = {
     Post.find({})
       .lean()
       .then((posts) => {
-        res.send(posts);
+        res.render('blogViews/blog', {posts: posts} )
       })
       .catch((err) => {
         res.send(err);
