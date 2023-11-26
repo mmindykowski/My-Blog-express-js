@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const hbs = require("express-handlebars");
+const mongoose = require('mongoose');
 
 app.use("/files", express.static("public"));
 
@@ -12,7 +13,7 @@ app.get("/", function (req, res) {
     title: "My app title",
     content: "Lorem ipsum",
     displayTitle: false,
-    names: ["Adam", "Ola", "Kasia", 'Tomek'],
+    names: ["Adam", "Ola", "Kasia", "Tomek"],
   });
 });
 
