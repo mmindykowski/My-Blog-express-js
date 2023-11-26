@@ -55,6 +55,7 @@ app.get("/", function (req, res) {
 // });
 
 app.get("/blog", postController.index);
+app.get("/blog/:id", postController.post);
 
 app.listen(8080, function () {
   console.log("Serwer Node.js działa");
