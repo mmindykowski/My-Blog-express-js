@@ -3,12 +3,19 @@ const app = express();
 const hbs = require("express-handlebars");
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://127.0.0.1L27017/express-blog");
+mongoose.connect("mongodb://127.0.0.1:27017/express-blog");
+
+const Post = require("./app/models/PostModel");
 
 app.use("/files", express.static("public"));
 
 app.engine("hbs", hbs.engine({ extname: ".hbs" }));
 app.set("view engine", "hbs");
+
+app.get("/mongoose", async function (req, res) {
+  const posts = await Post.find().exec();
+  res.send(posts);
+});
 
 app.get("/", function (req, res) {
   res.render("home", {
