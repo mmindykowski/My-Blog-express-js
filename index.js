@@ -12,7 +12,7 @@ app.use("/files", express.static("public"));
 app.engine("hbs", hbs.engine({ extname: ".hbs" }));
 app.set("view engine", "hbs");
 
-app.get("/mongoose/:id", async function (req, res) {
+app.get("/mongoose/:id", function (req, res) {
   Post.findById(req.params.id)
     .then((post) => {
       res.render("home", {
