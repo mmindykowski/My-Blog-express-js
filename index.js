@@ -7,6 +7,8 @@ mongoose.connect("mongodb://127.0.0.1:27017/express-blog");
 
 const Post = require("./app/models/PostModel");
 
+const postController = require("./app/controllers/postController");
+
 app.use("/files", express.static("public"));
 
 app.engine("hbs", hbs.engine({ extname: ".hbs" }));
@@ -51,6 +53,8 @@ app.get("/", function (req, res) {
 //     res.send("Błąd");
 //   }
 // });
+
+app.get("/blog", postController.index);
 
 app.listen(8080, function () {
   console.log("Serwer Node.js działa");
