@@ -13,7 +13,7 @@ app.engine("hbs", hbs.engine({ extname: ".hbs" }));
 app.set("view engine", "hbs");
 
 app.get("/mongoose/:id", async function (req, res) {
-  Post.findById("63bfb0e000bf08070bf491ca")
+  Post.findById(req.params.id)
     .then((post) => {
       res.render("home", {
         title: post.title,
