@@ -12,10 +12,15 @@ app.use("/files", express.static("public"));
 app.engine("hbs", hbs.engine({ extname: ".hbs" }));
 app.set("view engine", "hbs");
 
-app.get("/mongoose", async function (req, res) {
-  Post.findById('63bfb0e000bf08070bf491ca')
+app.get("/mongoose/:id", async function (req, res) {
+  Post.findById("63bfb0e000bf08070bf491ca")
     .then((post) => {
-      res.send(post);
+      res.render("home", {
+        title: post.title,
+        content: post.content,
+        displayTitle: true,
+        names: ["Adam", "Ola", "Kasia", "Tomek"],
+      });
     })
     .catch((err) => {
       res.send(err);
