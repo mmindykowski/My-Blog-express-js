@@ -1,7 +1,9 @@
 const express = require("express");
 const app = express();
 const hbs = require("express-handlebars");
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+
+mongosse.connect("mongodb://127.0.0.1L27017/express-blog");
 
 app.use("/files", express.static("public"));
 
