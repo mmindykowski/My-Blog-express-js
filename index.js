@@ -29,7 +29,7 @@ app.get("/mongoose/:id", function (req, res) {
     });
 });
 
-app.get("/", function (req, res) {
+app.get("/", function (_req, res) {
   res.render("home", {
     title: "My app title",
     content: "Lorem ipsum",
@@ -55,10 +55,11 @@ app.get("/", function (req, res) {
 // });
 
 app.get("/blog", postController.index);
+app.get("/blog/add", (_req, res) => {
+  res.render("blogViews/addPost");
+});
 app.get("/blog/:id", postController.post);
 
 app.listen(8080, function () {
   console.log("Serwer Node.js działa");
 });
-
-// 6.3 lekcja
