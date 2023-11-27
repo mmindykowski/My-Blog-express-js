@@ -20,4 +20,11 @@ module.exports = {
         res.send(err);
       });
   },
+  create: (req, res) => {
+    console.log(req.body);
+    const newPost = new Post({ ...req.body, author: "Arek" });
+    newPost.save();
+
+    res.redirect("/blog");
+  },
 };

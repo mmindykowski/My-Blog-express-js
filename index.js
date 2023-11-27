@@ -14,6 +14,8 @@ app.use("/files", express.static("public"));
 app.engine("hbs", hbs.engine({ extname: ".hbs" }));
 app.set("view engine", "hbs");
 
+app.use(express.urlencoded({ extended: true }));
+
 app.get("/mongoose/:id", function (req, res) {
   Post.findById(req.params.id)
     .then((post) => {
@@ -55,9 +57,13 @@ app.get("/", function (_req, res) {
 // });
 
 app.get("/blog", postController.index);
+
 app.get("/blog/add", (_req, res) => {
   res.render("blogViews/addPost");
 });
+
+app.post("/blog/add", postController.create);
+
 app.get("/blog/:id", postController.post);
 
 app.listen(8080, function () {
