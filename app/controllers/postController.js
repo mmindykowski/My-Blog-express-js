@@ -36,7 +36,15 @@ module.exports = {
         res.send(err);
       });
   },
-
+  delete: (req, res) => {
+    Post.findByIdAndDelete(req.params.id)
+      .then(() => {
+        res.redirect("/blog");
+      })
+      .catch((err) => {
+        res.send(err);
+      });
+  },
   editForm: (req, res) => {
     Post.findById(req.params.id)
       .then((post) => {
