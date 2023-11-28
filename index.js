@@ -66,6 +66,8 @@ app.post("/blog/add", postController.create);
 
 app.get("/blog/:id", postController.post);
 
+app.get("/blog/edit/:id", postController.editForm);
+
 app.listen(8080, function () {
   console.log("Serwer Node.js działa");
 });
