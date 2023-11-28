@@ -27,6 +27,15 @@ module.exports = {
 
     res.redirect("/blog");
   },
+  update: (req, res) => {
+    Post.findByIdAndUpdate(req.params.id, req.body).then((post) => {
+      res.redirect('/blog/' + post._id)
+    })
+    .catch((err) => {
+        res.send(err);
+      })
+  },
+
   editForm: (req, res) => {
     Post.findById(req.params.id)
       .then((post) => {
