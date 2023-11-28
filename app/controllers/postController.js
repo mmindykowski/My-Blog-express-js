@@ -25,7 +25,7 @@ module.exports = {
     const newPost = new Post({ ...req.body, author: "Arek" });
     newPost.save();
 
-    res.redirect("/blog");
+    res.redirect("/blog/");
   },
   update: (req, res) => {
     Post.findByIdAndUpdate(req.params.id, req.body)
@@ -39,7 +39,7 @@ module.exports = {
   delete: (req, res) => {
     Post.findByIdAndDelete(req.params.id)
       .then(() => {
-        res.redirect("/blog");
+        res.redirect("/blog/");
       })
       .catch((err) => {
         res.send(err);
