@@ -4,7 +4,13 @@
   <form action="/blog/edit/{{_id}}" method="POST">
     <div class="mb-3">
       <label for="title">Post title</label>
-      <input type="text" class="form-control" id="title" name="title" />
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        name="title"
+        value="{{title}}"
+      />
     </div>
     <div class="mb-3">
       <label for="content">Post content</label>
@@ -13,8 +19,8 @@
         id="content"
         class="form-control"
         rows="3"
-      ></textarea>
+      >{{content}}</textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Add</button>
+    <button type="submit" class="btn btn-primary">Update</button>
   </form>
 </div>
