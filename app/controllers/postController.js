@@ -27,4 +27,13 @@ module.exports = {
 
     res.redirect("/blog");
   },
+  editForm: (req, res) => {
+    Post.findById(req.params.id)
+      .then((post) => {
+        res.render("blogViews.editPost", post);
+      })
+      .catch((err) => {
+        res.send(err);
+      });
+  },
 };
