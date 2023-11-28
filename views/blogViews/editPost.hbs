@@ -1,0 +1,20 @@
+<div class="container">
+  <h2>Edit Post</h2>
+
+  <form action="/blog/edit/{{_id}}" method="POST">
+    <div class="mb-3">
+      <label for="title">Post title</label>
+      <input type="text" class="form-control" id="title" name="title" />
+    </div>
+    <div class="mb-3">
+      <label for="content">Post content</label>
+      <textarea
+        name="content"
+        id="content"
+        class="form-control"
+        rows="3"
+      ></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+</div>
