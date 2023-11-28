@@ -70,6 +70,8 @@ app.get("/blog/edit/:id", postController.editForm);
 
 app.post("/blog/edit/:id", postController.update);
 
+app.get("/blog/delete/:id", postController.delete);
+
 app.listen(8080, function () {
   console.log("Serwer Node.js działa");
 });
