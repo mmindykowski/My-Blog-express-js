@@ -7,7 +7,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/express-blog");
 
 const Post = require("./app/models/PostModel");
 
-const postController = require("./app/controllers/postController");
+const blogRouter = require("./app/router/blogRouter");
 
 app.use("/files", express.static("public"));
 
@@ -55,6 +55,9 @@ app.get("/", function (_req, res) {
 //     res.send("Błąd");
 //   }
 // });
+
+/* Routes */
+app.use("/blog", blogRouter);
 
 app.listen(8080, function () {
   console.log("Serwer Node.js działa");

@@ -3,18 +3,20 @@ const router = express.Router();
 
 const postController = require("./app/controllers/postController");
 
-app.get("/blog", postController.index);
+router.get("/", postController.index);
 
-app.get("/blog/add", (_req, res) => {
+router.get("/add", (_req, res) => {
   res.render("blogViews/addPost");
 });
 
-app.post("/blog/add", postController.create);
+router.post("/add", postController.create);
 
-app.get("/blog/:id", postController.post);
+router.get("//:id", postController.post);
 
-app.get("/blog/edit/:id", postController.editForm);
+router.get("/edit/:id", postController.editForm);
 
-app.post("/blog/edit/:id", postController.update);
+router.post("/edit/:id", postController.update);
 
-app.get("/blog/delete/:id", postController.delete);
+router.get("/delete/:id", postController.delete);
+
+module.exports = router
