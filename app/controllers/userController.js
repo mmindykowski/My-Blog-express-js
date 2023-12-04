@@ -1,4 +1,5 @@
 const User = require("../models/UserModel");
+const bcrypt = require("bcrypt");
 
 module.exports = {
   create: (req, res) => {
@@ -21,7 +22,6 @@ module.exports = {
   login: (req, res) => {
     User.findOne({ email: req.body.email })
       .then((user) => {
-        console.log(user);
         if (!user) {
           res.render("userViews/loginUser", {
             error: true,
@@ -30,6 +30,30 @@ module.exports = {
           });
           return;
         }
+
+        bcrypt.compare(req.body.password, user.password, (err, logged) => {
+          if (err) {
+            res.render("userViews/loginUser", {
+              error: true,
+              message: "Login error",
+              user: { email: req.body.email, password: "" },
+            });
+            return;
+          }
+
+          if (logged) {
+            const token = user.generateAuthToken(user);
+            res.cookie("AuthToken", token);
+            res.redirect("/blog");
+          } else {
+            res.render("userViews/loginUser", {
+              error: true,
+              message: "Login data do not match",
+              user: { email: req.body.email, password: "" },
+            });
+            return;
+          }
+        });
       })
       .catch((err) => {
         res.send(err);
