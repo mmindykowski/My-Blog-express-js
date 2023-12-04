@@ -7,6 +7,6 @@ router.get("/signup", (_req, res) => {
   res.render("userViews/signupUser");
 });
 
-router.post("/signup");
+router.post("/signup", userController.create);
 
 module.exports = router;
