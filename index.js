@@ -9,6 +9,8 @@ const Post = require("./app/models/PostModel");
 
 const blogRouter = require("./app/router/blogRouter");
 
+const userRouter = require("./app/router/userRouter");
+
 app.use("/files", express.static("public"));
 
 app.engine("hbs", hbs.engine({ extname: ".hbs" }));
@@ -58,6 +60,7 @@ app.get("/", function (_req, res) {
 
 /* Routes */
 app.use("/blog", blogRouter);
+app.use("/user", userRouter);
 
 app.listen(8080, function () {
   console.log("Serwer Node.js działa");
