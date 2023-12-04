@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const hbs = require("express-handlebars");
 const mongoose = require("mongoose");
+const cookieParser = require("cookie-parser");
 
 mongoose.connect("mongodb://127.0.0.1:27017/express-blog");
 
@@ -17,6 +18,7 @@ app.engine("hbs", hbs.engine({ extname: ".hbs" }));
 app.set("view engine", "hbs");
 
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 app.get("/mongoose/:id", function (req, res) {
   Post.findById(req.params.id)
