@@ -18,4 +18,21 @@ module.exports = {
         }
       });
   },
+  login: (req, res) => {
+    User.findOne({ email: req.body.email })
+      .then((user) => {
+        console.log(user);
+        if (!user) {
+          res.render("userViews/loginUser", {
+            error: true,
+            message: "That user not exist",
+            user: req.body,
+          });
+          return;
+        }
+      })
+      .catch((err) => {
+        res.send(err);
+      });
+  },
 };
