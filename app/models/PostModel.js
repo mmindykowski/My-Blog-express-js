@@ -1,6 +1,6 @@
-const mongosse = require("mongoose");
+const mongoose = require("mongoose");
 
-const Post = new mongosse.Schema(
+const Post = new mongoose.Schema(
   {
     title: String,
     content: String,
@@ -9,4 +9,4 @@ const Post = new mongosse.Schema(
   { timestamps: true }
 );
 
-module.exports = mongosse.model("Post", Post);
+module.exports = mongoose.model("Post", Post);
