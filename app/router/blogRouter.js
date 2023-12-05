@@ -3,7 +3,14 @@ const router = express.Router();
 
 const postController = require("../controllers/postController");
 
-router.get("/", postController.index);
+router.get(
+  "/",
+  (req, res, next) => {
+    console.log("Serwis pośredni routera");
+    next();
+  },
+  postController.index
+);
 
 router.get("/add", (_req, res) => {
   res.render("blogViews/addPost");
