@@ -21,9 +21,9 @@ module.exports = (req, res, next) => {
           res.send(err);
         });
     } catch {
-      res.redirect("/user/login");
+      res.redirect("/user/login?loginRedirect=true");
     }
   } else {
-    res.redirect("/user/login");
+    res.redirect("/user/login?loginRedirect=true");
   }
 };
