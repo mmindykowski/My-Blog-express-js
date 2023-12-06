@@ -12,7 +12,7 @@ router.get("/add", (_req, res) => {
 
 router.post("/add", postController.create);
 
-router.get("//:id", postController.post);
+router.get("/:id", postController.post);
 
 router.get("/edit/:id", postController.editForm);
 
