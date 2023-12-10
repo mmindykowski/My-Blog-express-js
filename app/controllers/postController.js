@@ -52,6 +52,13 @@ module.exports = {
   delete: (req, res) => {
     Post.findByIdAndDelete(req.params.id)
       .then(() => {
+        User.updateOne(
+          { _id: res.locals.userId },
+          { $pull: { posts: req.params.id } }
+        ).catch((err) => {
+          res.send(err);
+        });
+
         res.redirect("/blog/");
       })
       .catch((err) => {
