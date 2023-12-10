@@ -10,7 +10,7 @@ router.get("/signup", (_req, res) => {
 router.post("/signup", userController.create);
 
 router.get("/login", (_req, res) => {
-  if (req.query.loginRedirect) {
+  if (_req.query.loginRedirect) {
     res.render("userViews/loginUser", {
       error: true,
       message: "Please login to use app",
@@ -22,5 +22,6 @@ router.get("/login", (_req, res) => {
 });
 
 router.post("/login", userController.login);
+router.get("/login", userController.logout);
 
 module.exports = router;

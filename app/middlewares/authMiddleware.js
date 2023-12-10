@@ -4,12 +4,9 @@ const User = require("../models/UserModel");
 module.exports = (req, res, next) => {
   const token = req.cookies["AuthToken"];
 
-  console.log(token);
-
   if (token) {
     try {
       const verified = jwt.verify(token, "secretKey");
-      console.log(verified);
 
       User.findById(verified._id)
         .then((user) => {
