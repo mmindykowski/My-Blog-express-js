@@ -3,7 +3,8 @@ const User = require("../models/UserModel");
 
 module.exports = {
   index: (req, res) => {
-    Post.find({})
+    const findConfig = req.query.authorId ? { author: req.query.authorId } : {};
+    Post.find(findConfig)
       .populate("author")
       .lean()
       .then((posts) => {
