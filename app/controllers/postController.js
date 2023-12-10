@@ -4,8 +4,10 @@ const User = require("../models/UserModel");
 module.exports = {
   index: (req, res) => {
     Post.find({})
+      .populate("author")
       .lean()
       .then((posts) => {
+        console.log(posts);
         res.render("blogViews/blog", { posts: posts });
       })
       .catch((err) => {
@@ -14,6 +16,8 @@ module.exports = {
   },
   post: (req, res) => {
     Post.findById(req.params.id)
+      .populate("author")
+      .lean()
       .then((post) => {
         res.render("blogViews/singlePost", post);
       })
