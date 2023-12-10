@@ -18,20 +18,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         {{#if userId}}
-          <li class="nav-item">
-            <a class="nav-link"  href="/blog/add">Add</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link"  href="/blog/add">Log out, {{userName}}</a>
-          </li>
-        {{else}}
-          <li class="nav-item">
-            <a class="nav-link"  href="/user/signup">Sign up</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link"  href="/user/login">Log in</a>
-          </li>
-        {{/if}}
+  <li class="nav-item">
+    <a class="nav-link" href="/blog/add">Add</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/user/logout">Logout {{userName}}</a>
+  </li>
+{{else}}
+  <li class="nav-item">
+    <a class="nav-link" href="/user/signup">Signup</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/user/login">Login</a>
+  </li>
+{{/if}}
       </ul>
     </div>
   </div>

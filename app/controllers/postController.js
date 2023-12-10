@@ -1,4 +1,5 @@
 const Post = require("../models/PostModel");
+const User = require("../models/UserModel");
 
 module.exports = {
   index: (req, res) => {
@@ -22,8 +23,15 @@ module.exports = {
   },
   create: (req, res) => {
     console.log(req.body);
-    const newPost = new Post({ ...req.body, author: "Arek" });
+    const newPost = new Post({ ...req.body, author: res.locals.userId });
     newPost.save();
+
+    User.updateOne(
+      { _id: res.locals.userId },
+      { $push: { posts: newPost._id } }
+    ).catch((err) => {
+      res.send(err);
+    });
 
     res.redirect("/blog/");
   },
