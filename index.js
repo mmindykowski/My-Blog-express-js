@@ -20,6 +20,7 @@ app.set("view engine", "hbs");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(express.json());
 
 app.get("/mongoose/:id", function (req, res) {
   Post.findById(req.params.id)
