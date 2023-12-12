@@ -45,7 +45,7 @@ module.exports = {
   update: (req, res) => {
     Post.findByIdAndUpdate(req.params.id, req.body)
       .then((post) => {
-        res.status(201).json(post);
+        res.status(204).json(post);
       })
       .catch((err) => {
         res.status(500).json({ error: err });
