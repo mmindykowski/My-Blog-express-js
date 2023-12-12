@@ -5,5 +5,6 @@ const postApiController = require("../api/postApiController");
 
 router.get("/", postApiController.index);
 router.get("/:id", postApiController.post);
+router.post("/", postApiController.create);
 
 module.exports = router;
