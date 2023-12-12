@@ -9,6 +9,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/express-blog");
 const Post = require("./app/models/PostModel");
 
 const blogRouter = require("./app/router/blogRouter");
+const blogApiRouter = require("./app/router/blogApiRouter");
 const userRouter = require("./app/router/userRouter");
 const authMiddleware = require("./app/middlewares/authMiddleware");
 
@@ -64,8 +65,9 @@ app.get("/", function (_req, res) {
 app.use("/blog", authMiddleware, blogRouter);
 app.use("/user", userRouter);
 
+/* API Routes */
+app.use("/posts", blogApiRouter);
+
 app.listen(8080, function () {
   console.log("Serwer Node.js działa");
 });
-
-//29:58
