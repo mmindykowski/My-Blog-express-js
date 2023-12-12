@@ -42,4 +42,13 @@ module.exports = {
 
     res.status(201).json(newPost);
   },
+  update: (req, res) => {
+    Post.findByIdAndUpdate(req.params.id, req.body)
+      .then((post) => {
+        res.status(201).json(post);
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err });
+      });
+  },
 };
