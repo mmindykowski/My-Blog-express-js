@@ -51,4 +51,23 @@ module.exports = {
         res.status(500).json({ error: err });
       });
   },
+  delete: (req, res) => {
+    Post.findByIdAndDelete(req.params.id)
+      .populate("author")
+      .then((post) => {
+        User.updateOne(
+          { _id: post.author._id },
+          { $pull: { posts: req.params.id } }
+        ).catch((err) => {
+          res.send(err);
+        });
+
+        res.status(204).json({
+          message: "Post deleted",
+        });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err });
+      });
+  },
 };
