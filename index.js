@@ -67,7 +67,7 @@ app.use("/blog", authMiddleware, blogRouter);
 app.use("/user", userRouter);
 
 /* API Routes */
-app.use("/posts", blogApiRouter);
+app.use("/api/posts", blogApiRouter);
 
 app.listen(8080, function () {
   console.log("Serwer Node.js działa");
