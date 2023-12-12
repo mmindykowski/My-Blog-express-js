@@ -25,4 +25,21 @@ module.exports = {
         res.status(404).json({ error: "Resource not found" });
       });
   },
+  create: (req, res) => {
+    console.log(req.body);
+    const newPost = new Post({
+      ...req.body,
+      author: "656e0ee876e652cbb97fdb11",
+    });
+    newPost.save();
+
+    User.updateOne(
+      { _id: "656e0ee876e652cbb97fdb11" },
+      { $push: { posts: newPost._id } }
+    ).catch((err) => {
+      res.status(500).json({ error: err });
+    });
+
+    res.status(201).json(newPost);
+  },
 };
