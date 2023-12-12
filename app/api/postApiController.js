@@ -1,3 +1,6 @@
+const Post = require("../models/PostModel");
+const User = require("../models/UserModel");
+
 module.exports = {
   index: (req, res) => {
     const findConfig = req.query.authorId ? { author: req.query.authorId } : {};
