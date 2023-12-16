@@ -11,10 +11,9 @@ module.exports = {
       })
       .catch((err) => {
         if (err.code === 11000) {
-          res.render("userViews/signupUser", {
+          res.status(409).json({
             error: true,
             message: "User already exist",
-            user: req.body,
           });
         }
       });
