@@ -45,7 +45,7 @@ module.exports = {
   update: (req, res) => {
     Post.findByIdAndUpdate(req.params.id, req.body)
       .then((post) => {
-        res.status(204).json(post);
+        res.status(204);
       })
       .catch((err) => {
         res.status(500).json({ error: err });
@@ -62,9 +62,7 @@ module.exports = {
           res.send(err);
         });
 
-        res.status(204).json({
-          message: "Post deleted",
-        });
+        res.status(204);
       })
       .catch((err) => {
         res.status(500).json({ error: err });
