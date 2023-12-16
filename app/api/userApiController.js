@@ -7,7 +7,7 @@ module.exports = {
     newUser
       .save()
       .then(() => {
-        res.redirect("/blog");
+        res.status(201).json({ name: newUser.name, email: newUser.email });
       })
       .catch((err) => {
         if (err.code === 11000) {
