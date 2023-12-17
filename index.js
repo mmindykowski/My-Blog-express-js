@@ -14,6 +14,7 @@ const userRouter = require("./app/router/userRouter");
 const userApiRouter = require("./app/router/userApiRouter");
 
 const authMiddleware = require("./app/middlewares/authMiddleware");
+const authApiMiddleware = require("./app/middlewares/authApiMiddleware");
 
 app.use("/files", express.static("public"));
 
@@ -69,7 +70,7 @@ app.use("/blog", authMiddleware, blogRouter);
 app.use("/user", userRouter);
 
 /* API Routes */
-app.use("/api/posts", blogApiRouter);
+app.use("/api/posts", authApiMiddleware, blogApiRouter);
 app.use("/api/user", userApiRouter);
 
 app.listen(8080, function () {
