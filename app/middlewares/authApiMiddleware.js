@@ -5,7 +5,6 @@ module.exports = (req, res, next) => {
   if (token) {
     try {
       const verified = jwt.verify(token, "secretKey");
-      User.findById(verified._id);
 
       req.userId = verified._id;
       next();
