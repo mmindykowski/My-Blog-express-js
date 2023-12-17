@@ -46,7 +46,7 @@ module.exports = {
               jwt: token,
             });
           } else {
-            res.render("userViews/loginUser", {
+            res.status(400).json({
               error: true,
               message: "Login data do not match",
               user: { email: req.body.email, password: "" },
