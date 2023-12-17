@@ -34,7 +34,6 @@ module.exports = {
             res.status(500).json({
               error: true,
               message: "Login error",
-              user: { email: req.body.email, password: "" },
             });
             return;
           }
@@ -49,7 +48,6 @@ module.exports = {
             res.status(400).json({
               error: true,
               message: "Login data do not match",
-              user: { email: req.body.email, password: "" },
             });
             return;
           }
