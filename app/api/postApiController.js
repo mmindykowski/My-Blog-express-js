@@ -29,12 +29,12 @@ module.exports = {
     console.log(req.body);
     const newPost = new Post({
       ...req.body,
-      author: "656e0ee876e652cbb97fdb11",
+      author: req.userId,
     });
     newPost.save();
 
     User.updateOne(
-      { _id: "656e0ee876e652cbb97fdb11" },
+      { _id: req.userId },
       { $push: { posts: newPost._id } }
     ).catch((err) => {
       res.status(500).json({ error: err });
