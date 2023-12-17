@@ -31,7 +31,7 @@ module.exports = {
 
         bcrypt.compare(req.body.password, user.password, (err, logged) => {
           if (err) {
-            res.status(400).json({
+            res.status(500).json({
               error: true,
               message: "Login error",
               user: { email: req.body.email, password: "" },
@@ -41,8 +41,10 @@ module.exports = {
 
           if (logged) {
             const token = user.generateAuthToken(user);
-            res.cookie("AuthToken", token);
-            res.redirect("/blog");
+            res.status(200).json({
+              name: user.name,
+              jwt: token,
+            });
           } else {
             res.render("userViews/loginUser", {
               error: true,
