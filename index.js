@@ -11,7 +11,7 @@ const Post = require("./app/models/PostModel");
 const blogRouter = require("./app/router/blogRouter");
 const blogApiRouter = require("./app/router/blogApiRouter");
 const userRouter = require("./app/router/userRouter");
-const userApiRouter = require("./app/router/userApiRoter");
+const userApiRouter = require("./app/router/userApiRouter");
 
 const authMiddleware = require("./app/middlewares/authMiddleware");
 
