@@ -4,7 +4,7 @@ module.exports = (req, res, next) => {
   const token = req.header("Authorization");
   if (token) {
     try {
-      const verified = jwt.verify(token, "secretKey");
+      const verified = jwt.verify(token, process.env.TOKEN_KEY);
 
       req.userId = verified._id;
       next();

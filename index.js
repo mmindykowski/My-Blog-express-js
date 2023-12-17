@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const app = express();
 const hbs = require("express-handlebars");
@@ -73,6 +75,8 @@ app.use("/user", userRouter);
 app.use("/api/posts", authApiMiddleware, blogApiRouter);
 app.use("/api/user", userApiRouter);
 
-app.listen(8080, function () {
-  console.log("Serwer Node.js działa");
+app.listen(process.env.APP_PORT || 8080, function () {
+  console.log(
+    "Serwer Node.js działa na porcie " + (process.env.APP_PORT || 8080)
+  );
 });
