@@ -70,6 +70,7 @@ app.use("/user", userRouter);
 
 /* API Routes */
 app.use("/api/posts", blogApiRouter);
+app.use("/api/user", userApiRouter);
 
 app.listen(8080, function () {
   console.log("Serwer Node.js działa");
