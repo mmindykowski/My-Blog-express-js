@@ -11,6 +11,8 @@ const Post = require("./app/models/PostModel");
 const blogRouter = require("./app/router/blogRouter");
 const blogApiRouter = require("./app/router/blogApiRouter");
 const userRouter = require("./app/router/userRouter");
+const userApiRouter = require("./app/router/userApiRoter");
+
 const authMiddleware = require("./app/middlewares/authMiddleware");
 
 app.use("/files", express.static("public"));
